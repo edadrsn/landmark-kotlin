@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         //LISTVIEW KULLANIMI
         //ADAPTER:Layout & data yı birbirine bağlar ve listview/recyclerview gibi görünümlere bağlanıp bunları kullanıcıya göstermemize olanak sağlar
         //Mapping:Bir veriyi başka bir çevirmeye yarar
-        val adapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,landmarkList.map { landmark -> landmark.name})
+        /*val adapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,landmarkList.map { landmark -> landmark.name})
         binding.listView.adapter=adapter
         binding.listView.onItemClickListener=AdapterView.OnItemClickListener { parent, view, position, id ->
             //Verileri diğer aktiviteye aktardık
@@ -62,6 +62,8 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("landmark",landmarkList.get(position))
             startActivity(intent)
         }
+        */
+
 
 
     }
