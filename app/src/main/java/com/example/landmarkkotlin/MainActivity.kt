@@ -1,6 +1,9 @@
 package com.example.landmarkkotlin
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -32,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         val aya_sofia = Landmark("AYA SOFYA", "TURKEY", R.drawable.ayasofia);
         val cinque_terre = Landmark("CINQUE TERRE", "ITALY", R.drawable.cinque_terre);
 
-        //ArrayList ile tüm verileri tek bir lite içinde topladık
+        //ArrayList ile tüm verileri tek bir liste içinde topladık
         landmarkList=ArrayList<Landmark>()
         landmarkList.add(pisa)
         landmarkList.add(eiffel)
@@ -46,6 +49,19 @@ class MainActivity : AppCompatActivity() {
         landmarkList.add(louvre_museum)
         landmarkList.add(aya_sofia)
         landmarkList.add(cinque_terre)
+
+
+        //LISTVIEW KULLANIMI
+        //ADAPTER:Layout & data yı birbirine bağlar ve listview/recyclerview gibi görünümlere bağlanıp bunları kullanıcıya göstermemize olanak sağlar
+        //Mapping:Bir veriyi başka bir çevirmeye yarar
+        val adapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,landmarkList.map { landmark -> landmark.name})
+        binding.listView.adapter=adapter
+        binding.listView.onItemClickListener=AdapterView.OnItemClickListener { parent, view, position, id ->
+            //Verileri diğer aktiviteye aktardık
+            val intent= Intent(this,MainActivity2::class.java)
+            intent.putExtra("landmark",landmarkList.get(position))
+            startActivity(intent)
+        }
 
 
     }

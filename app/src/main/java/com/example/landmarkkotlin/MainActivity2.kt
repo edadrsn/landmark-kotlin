@@ -17,5 +17,14 @@ class MainActivity2 : AppCompatActivity() {
         binding=ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        //LISTVIEW
+        val intent=intent
+        //Casting
+        //Serileştirilebilir veri alma işlemi
+        val selectedLandmark=intent.getSerializableExtra("landmark") as Landmark
+        binding.nameText.text=selectedLandmark.name
+        binding.countryText.text=selectedLandmark.country
+        binding.imageView.setImageResource(selectedLandmark.image)
     }
 }
