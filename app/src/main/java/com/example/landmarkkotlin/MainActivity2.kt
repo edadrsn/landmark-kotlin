@@ -22,9 +22,18 @@ class MainActivity2 : AppCompatActivity() {
         val intent=intent
         //Casting
         //Serileştirilebilir veri alma işlemi
-        val selectedLandmark=intent.getSerializableExtra("landmark") as Landmark
-        binding.nameText.text=selectedLandmark.name
-        binding.countryText.text=selectedLandmark.country
-        binding.imageView.setImageResource(selectedLandmark.image)
+        //val selectedLandmark=intent.getSerializableExtra("landmark") as Landmark
+        //binding.nameText.text=selectedLandmark.name
+        //binding.countryText.text=selectedLandmark.country
+        //binding.imageView.setImageResource(selectedLandmark.image)
+
+        //Singleton ile yapma
+        val selectedLandmark=MySingleton.chosenLandmark
+        selectedLandmark?.let{
+            binding.nameText.text=it.name
+            binding.countryText.text=it.country
+            binding.imageView.setImageResource(it.image)
+        }
+
     }
 }
